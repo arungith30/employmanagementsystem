@@ -35,16 +35,15 @@ function LoginPage() {
 
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("role", response.data.role);
-        toast.success(response.data.message, {
-          position: toast.POSITION.TOP_CENTER,
-        });
-
         // Redirect based on role
         if (response.data.role === "admin") {
           navigate("/admin/dashboard");
         } else {
           navigate("/employee/dashboard");
         }
+        toast.success(response.data.message, {
+          position: toast.POSITION.TOP_CENTER,
+        });
       } catch (err) {
         toast.error(
           err.response?.data?.error || "An error occurred during login",

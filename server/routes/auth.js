@@ -55,11 +55,11 @@ router.post("/login", async (req, res) => {
     const token = jwt.sign(
       { id: employee._id, role: employee.role },
       jwtSecret,
-      { expiresIn: "1d" }
+      { expiresIn: "1h" }
     );
 
     // Set the token as a cookie and respond
-    res
+    return res
       .cookie("token", token, {
         httpOnly: true, // Prevents client-side access to the cookie
         secure: process.env.NODE_ENV === "production", // Use HTTPS in production

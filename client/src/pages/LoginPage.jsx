@@ -24,7 +24,10 @@ function LoginPage() {
       try {
         const response = await axios.post(
           "http://localhost:5000/api/auth/login",
-          values
+          values,
+          {
+            withCredentials: true,
+          }
         );
 
         // Save token in localStorage and handle role-based redirection

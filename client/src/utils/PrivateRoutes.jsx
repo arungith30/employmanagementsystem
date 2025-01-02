@@ -15,6 +15,7 @@ const PrivateRoute = ({ children, allowedRoles }) => {
     const decoded = JSON.parse(atob(token.split(".")[1]));
 
     // Check if the role from the decoded token is in the allowed roles for the route
+    // eslint-disable-next-line react/prop-types
     if (!allowedRoles.includes(decoded.role)) {
       console.warn("Unauthorized access: role not allowed");
       return <Navigate to="/" />;

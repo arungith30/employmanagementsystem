@@ -29,6 +29,7 @@ const timeLogSchema = new mongoose.Schema(
         return null;
       },
     },
+    approved: { type: Boolean, default: false },
   },
   { timestamps: true } // Automatically adds `createdAt` and `updatedAt` fields
 );

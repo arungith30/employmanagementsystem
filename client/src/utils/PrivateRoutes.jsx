@@ -4,6 +4,8 @@ import { Navigate, useLocation } from "react-router-dom";
 const PrivateRoute = ({ children, allowedRoles }) => {
   const location = useLocation(); // For redirecting to the attempted URL after login
   const token = localStorage.getItem("token");
+  console.log("LOCAL TOKEN:", { token });
+  console.log("allowedRoles:", { allowedRoles });
 
   // If no token, redirect to login
   if (!token) {
@@ -13,6 +15,7 @@ const PrivateRoute = ({ children, allowedRoles }) => {
   try {
     // Decode the token manually using atob
     const decoded = JSON.parse(atob(token.split(".")[1]));
+    console.log("decoded token:", { decoded });
 
     // Check if the role from the decoded token is in the allowed roles for the route
     // eslint-disable-next-line react/prop-types

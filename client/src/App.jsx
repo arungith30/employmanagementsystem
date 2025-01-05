@@ -4,10 +4,11 @@ import RegisterPage from "./pages/RegisterPage";
 import EmployeeDashboard from "./pages/EmployeeDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
 import PrivateRoute from "./utils/PrivateRoutes";
-
+import Navbar from "./components/Navbar";
 function App() {
   return (
     <Router>
+      <Navbar />
       <Routes>
         {/* Public Routes */}
         <Route path="/" element={<LoginPage />} />

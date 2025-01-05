@@ -5,9 +5,9 @@ const cors = require("cors");
 const { router: authRoutes } = require("./routes/auth");
 const cookieParser = require("cookie-parser");
 
-// const employeeRoutes = require("./routes/employee");
-// const adminRoutes = require("./routes/admin");
-// const taskRoutes = require("./routes/task");
+const employeeRoutes = require("./routes/employeeRoutes");
+
+const taskRoutes = require("./routes/taskRoutes");
 const timeLogRoutes = require("./routes/timeLog");
 
 dotenv.config();
@@ -38,9 +38,9 @@ app.get("/", (req, res) => {
 
 // Routes
 app.use("/api/auth", authRoutes);
-// app.use("/api/employees", employeeRoutes);
-// app.use("/api/admins", adminRoutes);
-// app.use("/api/tasks", taskRoutes);
+app.use("/api/employees", employeeRoutes);
+
+app.use("/api/tasks", taskRoutes);
 app.use("/api/timelogs", timeLogRoutes);
 
 // Error Handling Middleware

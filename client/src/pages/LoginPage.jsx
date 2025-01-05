@@ -31,24 +31,26 @@ function LoginPage() {
         );
 
         // Save token in localStorage and handle role-based redirection
-        console.log(response.data);
 
-        localStorage.setItem("token", response.data.token);
-        localStorage.setItem("role", response.data.role);
+        localStorage.setItem("token", JSON.stringify(response.data.token));
+
+        localStorage.setItem("user", JSON.stringify(response.data.employee));
         // Redirect based on role
-        if (response.data.role === "admin") {
+
+        if (response.data.employee.role === "admin") {
           navigate("/admin/dashboard");
         } else {
           navigate("/employee/dashboard");
         }
+        console.log(response.data.employee.role);
         toast.success(response.data.message, {
-          position: toast.POSITION.TOP_CENTER,
+          position: "top-center",
         });
       } catch (err) {
         toast.error(
           err.response?.data?.error || "An error occurred during login",
           {
-            position: toast.POSITION.TOP_CENTER,
+            position: "top-center",
           }
         );
       }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { Bar, Pie } from "react-chartjs-2";
 import {
@@ -30,11 +30,11 @@ function AdminReports() {
       const headers = { Authorization: `Bearer ${token}` };
 
       const hoursResponse = await axios.get(
-        "http://localhost:5000/api/analytics/hours-per-employee",
+        `${import.meta.env.VITE_API_URL}/api/analytics/hours-per-employee`,
         { headers }
       );
       const taskStatusResponse = await axios.get(
-        "http://localhost:5000/api/analytics/task-status-summary",
+        `${import.meta.env.VITE_API_URL}/api/analytics/task-status-summary`,
         { headers }
       );
 

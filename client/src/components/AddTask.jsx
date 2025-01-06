@@ -24,7 +24,7 @@ function AddTask() {
             : console.log(" token is here", token);
 
           const { data } = await axios.get(
-            "http://localhost:5000/api/employees",
+            `${import.meta.env.VITE_API_URL}/api/employees`,
             {
               headers: { Authorization: `Bearer ${token}` },
             }
@@ -64,7 +64,7 @@ function AddTask() {
     console.log("Task data being submitted:", taskData);
 
     try {
-      await axios.post("http://localhost:5000/api/tasks", taskData, {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/tasks`, taskData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       alert("Task created successfully!");

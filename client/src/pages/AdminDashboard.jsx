@@ -10,7 +10,7 @@ function AdminDashboard() {
       const token = JSON.parse(localStorage.getItem("token"));
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/timelogs/all",
+          `${import.meta.env.VITE_API_URL}/api/timelogs/all`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
